@@ -30,3 +30,25 @@ fn shadowing() {
     println!("The value of x is: {x}"); // x = 6
 } 
 ```
+
+## 12/18/25
+
+### Undefined Behavior
+
+"Safe" code is the absence of undefined behavior. Chapter 4 is mainly focused on operations on memory but [here](https://doc.rust-lang.org/reference/behavior-considered-undefined.html) is a list of the rest of them.
+
+## 12/19/25
+
+### Slice Fun
+
+Slices are essentially "fat" pointers to an area in memory. They have a pointer to the block of memory and a size to show where they stop. These are really useful for when you need to return or reference a portion of the memory but need to make sure it doesn't go out of scope when you finally use the reference.
+
+```Rust
+fn main() {
+    let s = String::from("Hello, World!");
+    let hello: &str = &s[0..5];
+    let world: &str = &s[7..11];
+
+    println!("{} {}", hello, world);
+}
+```
